@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <string>
+#include <vector>
 
 enum TokenType : uint8_t {
     TT_invalid,
@@ -21,6 +22,16 @@ struct Token {
     
     std::string file;       // used for error tracking
     int lineInFile;         // line# in file for error tracking
+};
+
+struct Section {
+    std::vector<Token> tokens;
+    std::string name;
+};
+
+struct Subroutine {
+    std::vector<Section> sections;
+    std::string name;
 };
 
 #endif
