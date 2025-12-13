@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 
-std::string read_file(std::string path) {
+std::string fio::read_file(std::string path) {
     auto str = std::ifstream(path);
     if (!str.is_open()) {
         std::cerr << "[ERROR] Failed to open (r) file: " << path << std::endl;
@@ -17,7 +17,7 @@ std::string read_file(std::string path) {
     return buffer.str();
 }
 
-void write_file(std::string path, std::string content) {
+void fio::write_file(std::string path, std::string content) {
     auto str = std::ofstream(path);
     if (!str.is_open()) {
         std::cerr << "[ERROR] Failed to open (w) file: " << path << std::endl;

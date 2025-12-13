@@ -10,11 +10,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::string source = read_file("_examples/" + std::string(argv[1]) + ".ba");
+    std::string source = fio::read_file("_examples/" + std::string(argv[1]) + ".ba");
     
     
     
-    write_file("_output/" + std::string(argv[1]) + ".bf", source);
+    fio::write_file("_output/" + std::string(argv[1]) + ".bf", source);
 
     return 0;
 }
