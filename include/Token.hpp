@@ -8,6 +8,7 @@
 enum TokenType : uint8_t {
     TT_invalid,
     TT_EOF,
+    TT_NL,              // new line - instruction separator
     TT_identifier,      // x, ?var (pointer prefix is part of name)
     TT_instruction,     // if, set, ++, !=, etc.
     TT_section,         // denoted by .
@@ -19,9 +20,6 @@ enum TokenType : uint8_t {
 struct Token {
     std::string content;    // exact eg. identifier this token contains
     TokenType type;         // what kind of token is this?
-    
-    std::string file;       // used for error tracking
-    int lineInFile;         // line# in file for error tracking
 };
 
 struct Section {
