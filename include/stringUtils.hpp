@@ -19,6 +19,8 @@ std::string remove_duplicate(std::string str, char c);
 std::string replace_all(std::string str, char old, char replacement);
 std::string replace_all(std::string str, std::string old, std::string replacement);
 
+// split string
+std::vector<std::string> split(std::string str, char c);
 }
 
 #endif

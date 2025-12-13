@@ -4,6 +4,7 @@
 
 #include "Token.hpp"
 #include "Compiler.hpp"
+#include "stringUtils.hpp"
 
 // This file implements Compiler::tokenise
 

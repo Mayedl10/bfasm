@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
 #include "stringUtils.hpp"
 
@@ -44,5 +45,17 @@ std::string su::replace_all(std::string str, char old, char replacement) {
 }
 
 std::string su::replace_all(std::string str, std::string old, std::string replacement) {
-    return "su::replace_all has not been implemented yet. check src/stringUtils.cpp";
+    return "su::replace_all has not been implemented yet for old and replacement as strings. check src/stringUtils.cpp";
+}
+
+std::vector<std::string> su::split(std::string str, char c) {
+    std::vector<std::string> res;
+    std::stringstream sstr(str);
+    std::string item;
+
+    while (std::getline(sstr, item, c)) {
+        res.push_back(item);
+    }
+
+    return res;
 }
