@@ -12,8 +12,11 @@ class Compiler {
     // code -> tokens
     std::vector<Token> tokenise(std::string code);
 
+    // organises tokens into subroutines and sections
+    std::vector<Subroutine> organise_tokens(std::vector<Token> tokens);
+
     // optimise code before turning into bf
-    std::vector<Token> optimise_tokens(Subroutine subroutine);
+    Subroutine optimise_tokens(Subroutine subroutine);
 
     // tokens -> bf
     // expects entry point "main"
