@@ -16,7 +16,8 @@ class Compiler {
     std::vector<Token> optimise_tokens(std::vector<Token> tokens);
 
     // tokens -> bf
-    std::string compile_tokens(std::vector<Token> tokens);
+    // expects entry point "main"
+    std::string compile_program(std::vector<Subroutine> subroutines);
 
     // optimise bf code (remove redundant patterns)
     std::string optimise_bf(std::string bf);
