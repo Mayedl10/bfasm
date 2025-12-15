@@ -20,6 +20,10 @@ enum TokenType : uint8_t {
 struct Token {
     std::string content;    // exact eg. identifier this token contains
     TokenType type;         // what kind of token is this?
+    Token(std::string tokenContent, TokenType tokenType) {
+        content = tokenContent;
+        type = tokenType;
+    }
 };
 
 struct Section {
