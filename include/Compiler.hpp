@@ -6,6 +6,18 @@
 #include <vector>
 
 #include "Token.hpp"
+#include "Error.hpp"
+
+struct BfInstructions {
+    static constexpr const char* inc    = "+";
+    static constexpr const char* dec    = "-";
+    static constexpr const char* print  = ".";
+    static constexpr const char* read   = ",";
+    static constexpr const char* left   = "<";
+    static constexpr const char* right  = ">";
+    static constexpr const char* open   = "[";
+    static constexpr const char* close  = "]";
+};
 
 class Compiler {
 public:
@@ -14,6 +26,8 @@ public:
 
     // removes comments and invalid (empty) tokens
     std::vector<Token> clean_tokens(std::vector<Token> tokens);
+
+    std::vector<CompilerError> validate(std::vector<Token> tokens);
 
     // organises tokens into subroutines and sections
     std::vector<Subroutine> organise_tokens(std::vector<Token> tokens);
