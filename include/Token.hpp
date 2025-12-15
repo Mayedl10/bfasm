@@ -30,11 +30,21 @@ struct Token {
 struct Section {
     std::vector<Token> tokens;
     std::string name;
+    Section(std::vector<Token> sectionTokens, std::string sectionName) {
+        tokens = sectionTokens;
+        name = sectionName;
+    }
+    Section() {}
 };
 
 struct Subroutine {
     std::vector<Section> sections;
     std::string name;
+    Subroutine(std::vector<Section> subsections, std::string subName) {
+        sections = subsections;
+        name = subName;
+    }
+    Subroutine() {}
 };
 
 #endif
