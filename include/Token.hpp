@@ -24,6 +24,7 @@ struct Token {
         content = tokenContent;
         type = tokenType;
     }
+    Token() {}
 };
 
 struct Section {
