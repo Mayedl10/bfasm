@@ -19,9 +19,13 @@ int main(int argc, char* argv[]) {
 
     auto tokens = comp.tokenise(source);
     tokens = comp.clean_tokens(tokens);
+    std::vector<Subroutine> subs = comp.organise_tokens(tokens);
     
-    for (int i = 0; i < tokens.size(); i++) {
-        std::cout << i << "\t" << static_cast<int>(tokens[i].type) << "\t" << ((tokens[i].content == "\n") ? "\\n" : tokens[i].content) << std::endl;
+    for (Subroutine r: subs) {
+        std::cout << r.name << std::endl;
+        for (Section s: r.sections) {
+            std::cout << "\t" << s.name << "\t" << s.tokens.size() << std::endl;
+        }
     }
 
     // fio::write_file("_output/" + std::string(argv[1]) + ".bf", source);

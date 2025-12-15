@@ -5,6 +5,9 @@
 #include <string>
 #include <vector>
 
+// cannot actually occur in code because the space would split the token
+#define START_SECTION ": START"
+
 enum TokenType : uint8_t {
     TT_invalid,
     TT_EOF,
