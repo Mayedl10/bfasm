@@ -19,7 +19,7 @@ public:
     std::vector<Subroutine> organise_tokens(std::vector<Token> tokens);
 
     // optimise code before turning into bf
-    Subroutine optimise_tokens(Subroutine subroutine);
+    Subroutine optimise_subroutine(Subroutine subroutine);
 
     // tokens -> bf
     // expects entry point "main"
