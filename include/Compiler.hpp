@@ -12,6 +12,9 @@ public:
     // code -> tokens
     std::vector<Token> tokenise(std::string code);
 
+    // removes comments and invalid (empty) tokens
+    std::vector<Token> clean_tokens(std::vector<Token> tokens);
+
     // organises tokens into subroutines and sections
     std::vector<Subroutine> organise_tokens(std::vector<Token> tokens);
 

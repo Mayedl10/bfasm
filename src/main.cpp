@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
     Compiler comp;
 
     auto tokens = comp.tokenise(source);
+    tokens = comp.clean_tokens(tokens);
     
     for (int i = 0; i < tokens.size(); i++) {
         std::cout << i << "\t" << static_cast<int>(tokens[i].type) << "\t" << ((tokens[i].content == "\n") ? "\\n" : tokens[i].content) << std::endl;
