@@ -33,12 +33,13 @@
 - `printV_c` `var/const` - prints a character from a variable
 - `printV_n` `var/const` - prints a number from a variable
 - `printS` `str` - prints a string (:text)
+- `printA_c` `dyn/stat` `var/str/const` - prints a static/dynamic array as characters, with a specific separator
+- `printA_n` `dyn/stat` `var/str/const` - prints a static/dynamic array as numbers, with a specific separator
 - `readV_c` `var`- read a single character
 - `readV_n` `var` - read a single DECIMAL DIGIT
-- `readSA_c` `stat` `const` - reads a constant number of characters into a static array  (does not overwrite past the nth element)
-- `readSA_n` `stat` `const` - reads a constant number of DECIMAL DIGITS into a static array (does not overwrite past the nth element)
-- `readDA_c` `dyn` `const` - reads a constant number of characters into a dynamic array  (does not overwrite past the nth element) (VERY EXPENSIVE!)
-- `readDA_n` `dyn` `const` - reads a constant number of DECIMAL DIGITS into a dynamic array (does not overwrite past the nth element) (VERY EXPENSIVE!)
+- `readA_c` `dyn/stat` `const` - reads a constant number of characters into a dynamic/static array  (does not overwrite past the nth element) (very expensive for dynamic arrays!)
+- `readA_n` `dyn/stat` `const` - reads a constant number of DECIMAL DIGITS into a dynamic/static array (does not overwrite past the nth element) (very expensive for dynamic arrays!)
+
 
 ## Flow Control
 - `if` `var` `..code..` `endIf` - if var != 0, execute code

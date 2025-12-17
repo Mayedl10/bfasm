@@ -54,18 +54,17 @@ public:
 
         "printV_c", "printV_n",
         "printS",
-        "printSA_c", "printSA_n",
-        "printDA_c", "printDA_n",
+        "printA_c", "printA_n",
 
         "readV_c", "readV_n",
-        "readSA_c", "readSA_n",
-        "readDA_n", "readDA_c",
+        "readA_c", "readA_n",
 
-        "if", "else",
-        "while",
+        "if", "else", "endIf",
+        "while", "endWhile",
         "clear", "set",
-        "memset",
-        "collapse"
+        "collapse",
+        "call",
+        "include"
     };
     std::string compile(std::string code);  // exposed part of the api
 };
