@@ -3,6 +3,7 @@
 ## Preface
 
 `var` refers to any byte or index pointer    
+`ptr` index pointer
 `const` refers to a constant at compile time (can only be a number outside of `:text` section)    
 `str` refers to a constant string defined in `:text`    
 `stat` refers to a static array    
@@ -33,8 +34,8 @@
 - `printV_c` `var/const` - prints a character from a variable
 - `printV_n` `var/const` - prints a number from a variable
 - `printS` `str` - prints a string (:text)
-- `printA_c` `dyn/stat` `var/str/const` - prints a static/dynamic array as characters, with a specific separator
-- `printA_n` `dyn/stat` `var/str/const` - prints a static/dynamic array as numbers, with a specific separator
+- `printA_c` `dyn/stat` `var/str/const/none` - prints a static/dynamic array as characters, with a specific separator
+- `printA_n` `dyn/stat` `var/str/const/none` - prints a static/dynamic array as numbers, with a specific separator
 - `readV_c` `var`- read a single character
 - `readV_n` `var` - read a single DECIMAL DIGIT
 - `readA_c` `dyn/stat` `const` - reads a constant number of characters into a dynamic/static array  (does not overwrite past the nth element) (very expensive for dynamic arrays!)
@@ -42,16 +43,18 @@
 
 
 ## Flow Control
-- `if` `var` `..code..` `endIf` - if var != 0, execute code
-- `if` `var` `..code..` `else` `..code..` `endIf` - if var != 0, execute if-code, otherwise execute else-code
-- `while` `var` `..code..` `endWhile` -  Brainfuck's `[]`, while var != 0, repeat code
+- `if` `var/const` `..code..` `endIf` - if var != 0, execute code
+- `if` `var/const` `..code..` `else` `..code..` `endIf` - if var != 0, execute if-code, otherwise execute else-code
+- `while` `var/const` `..code..` `endWhile` -  Brainfuck's `[]`, while var != 0, repeat code (note: no "break"!)
 - `call` `sub` `args` - calls a subroutine
 - `call` `sub` - calls a subroutine with all arguments defaulting to 0
 
 ## Memory
 - `clear` `var/dyn/stat` - sets (all values of) the passed argument to zero
 - `set` `var/dyn/stat` `var/const` - sets (all values of) the passed argument to a specific value
-- `collapse` `var` - `var = (var > 0) ? 1 : 0` 
+- `collapse` `var` - `var = (var > 0) ? 1 : 0`
 
-## Other
-- `include` `filename` - tells the compiler to look for a certain file in the include-directories. if found, insert file contents.
+## Arrays
+- `index` `ptr` `dyn/stat` `const` - sets ptr to point to an element of a static/dynamic array with a constant index
+- `setD` `dyn` `var` `var/const` - sets a dynamically indexed element of an array to a constant/dynamic value
+- `getD` `dyn` `var` `var` - gets a dynamically indexed element of an array and stores it in a variable

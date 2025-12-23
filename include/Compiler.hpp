@@ -4,9 +4,13 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <functional>
+#include <unordered_map>
 
 #include "Token.hpp"
 #include "Error.hpp"
+#include "Routine.hpp"
+
 
 struct BfInstructions {
     static constexpr const char* inc    = "+";
@@ -21,16 +25,31 @@ struct BfInstructions {
 
 class Compiler {
 public:
+
+    ////////////////
+    // Variables
+
+    std::unordered_map<std::string, std::function<void()>> instructionMap;
+
+    std::vector<SyntaxRule> syntaxRules;
+
+    ////////////////
+    // Methods
+
+    void set_syntax_rules();
+    void create_instruction_mappings();
+
     // code -> tokens
     std::vector<Token> tokenise(std::string code);
 
     // removes comments and invalid (empty) tokens
     std::vector<Token> clean_tokens(std::vector<Token> tokens);
 
-    std::vector<CompilerError> validate(std::vector<Token> tokens);
-
     // organises tokens into subroutines and sections
     std::vector<Subroutine> organise_tokens(std::vector<Token> tokens);
+
+    // check for (syntax) errors
+    std::vector<CompilerError> validate(ParsedSubroutine routine);
 
     // optimise code before turning into bf
     Subroutine optimise_subroutine(Subroutine subroutine);
@@ -45,6 +64,9 @@ public:
 // make earlier section private for release
 
 //public:
+
+    ////////////////
+    // Variables
 
     // all the reserved words
     const std::vector<const char*> keywords = {
@@ -64,9 +86,17 @@ public:
         "clear", "set",
         "collapse",
         "call",
-        "include"
+        "index", "setD", "getD"
     };
+
+    ////////////////
+    // Methods
+
     std::string compile(std::string code);  // exposed part of the api
+
+    Compiler(); // allocate instructionMap
+    ~Compiler(); // deallocate instructionMap
+
 };
 
 #endif
